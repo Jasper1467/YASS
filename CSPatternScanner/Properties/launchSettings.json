@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "CSPatternScanner": {
+      "commandName": "Project",
+      "commandLineArgs": "-s \"input/test.json\" -o \"output/test.h\" -f \"C:\\Windows\\SysWOW64\\notepad.exe\"",
+      "workingDirectory": "."
+    }
+  }
+}
