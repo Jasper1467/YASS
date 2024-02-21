@@ -2,7 +2,7 @@
 
 Yet another signature scanner. There are two projects in here, `PatternScanner`, a C++ library for signature scanning memory for byte patterns. `CSPatternScanner` a C# project which can automate the process of finding many signatures in files and writing them to a C++ header file automatically.
 
-Supports PEiD-style signatures directly from C++. 
+Supports PEiD-style signatures directly from x64dbg plugin [SwissArmyKnife](https://github.com/Nukem9/SwissArmyKnife/releases). 
 
 ![signature-style](resources/signature-style.png)
 
