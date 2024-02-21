@@ -24,7 +24,13 @@ int main() {
 
 C# program to scan for multiple file signatures and generate a C++ header file containing found offsets.
 
-Given the following `signatures.json` file
+### Usage
+
+The following command will generate a `signatures.h` file containing the found offsets:
+
+`CSPatternScanner.exe -s signatures.json -o signatures.h -f "C:\Windows\SysWOW64\notepad.exe"`
+
+Sample `signatures.json` file
 
 ```JSON
 [
@@ -39,8 +45,7 @@ Given the following `signatures.json` file
 ]
 ```
 
-The following command will generate a `signatures.h` file containing the found offsets.
-
+Output signatures.h file
 ```cpp
 // This file was generated automatically by CSPatternScanner.exe
 
@@ -48,5 +53,4 @@ The following command will generate a `signatures.h` file containing the found o
 #define Notepad32_2 0x1129A; // 
 ```
 
-# 32-bit version of notepad
-`CSPatternScanner.exe -s signatures.json -o signatures.h -f "C:\Windows\SysWOW64\notepad.exe"`
+
