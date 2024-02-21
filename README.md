@@ -1,3 +1,52 @@
 # YASS
 
-Yet another signature scanner
+Yet another signature scanner. There are two projects in here, `PatternScanner`, a C++ library for signature scanning memory for byte patterns. `CSPatternScanner` a C# project which can automate the process of finding many signatures in files and writing them to a C++ header file automatically.
+
+Supports PEiD-style signatures directly from C++. 
+
+![signature-style](resources/signature-style.png)
+
+## PatternScanner (C++)
+
+```cpp
+#include "lib/SigScanner.h"
+
+int main() {
+  // Create a scanner for a module by name
+  SigScanner scanner("ntdll");
+
+  // Scan - throws if not found
+  auto addr = scanner.Scan("83 3D ?? ?? ?? ?? ?? 74 0E 8B ?? ?? ?? ?? ?? FF 15 ?? ?? ?? ?? FF E1 8D");
+}
+```
+
+## CSPatternScanner (C#)
+
+C# program to scan for multiple file signatures and generate a C++ header file containing found offsets.
+
+Given the following `signatures.json` file
+
+```JSON
+[
+	{
+		"name": "Notepad32_1",
+		"pattern": "BA 03"
+	},
+	{
+		"name": "Notepad32_2",
+		"pattern": "FF 35 ?? ?? ?? ?? 8B ?? ?? ?? ?? ?? 8B ?? ?? ?? ?? ?? E8 ?? ?? ?? ?? 8D"
+	}
+]
+```
+
+The following command will generate a `signatures.h` file containing the found offsets.
+
+```cpp
+// This file was generated automatically by CSPatternScanner.exe
+
+#define Notepad32_1 0x109AD; // 
+#define Notepad32_2 0x1129A; // 
+```
+
+# 32-bit version of notepad
+`CSPatternScanner.exe -s signatures.json -o signatures.h -f "C:\Windows\SysWOW64\notepad.exe"`

@@ -24,7 +24,7 @@ SigScanner::SigScanner(const char *moduleName) {
   GetTextSectionBytes(_hModule);
 }
 
-void* SigScanner::Scan(const char *szPattern) {
+void *SigScanner::Scan(const char *szPattern) {
   SigPattern pattern = szPattern;
 
   uint8_t *codeStart = _textSectionVA;
